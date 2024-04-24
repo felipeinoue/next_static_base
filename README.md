@@ -11,3 +11,4 @@ In vars.js rename "my-app" to the "new_name"
 
 3. Development
 on the terminal, run "npm run dev"
+

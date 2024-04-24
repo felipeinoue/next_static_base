@@ -4,17 +4,17 @@ import Head from "next/head";
 import { GlobalContext } from "../globals/lib";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { GETCOOKIE } from "@/globals/functions";
-import { COOKIE_TOKEN } from "@/globals/var";
+import { DELETECOOKIE, GETCOOKIE } from "@/globals/functions";
+import { BASE_PATH, COOKIE_TOKEN } from "@/globals/var";
 import Loading from "@/components/loading";
 import styles from "./index.module.css";
+import { GET_USER } from "@/globals/apicalls";
 
 
 export default function App({ Component, pageProps }) {
   const [AUTHENTICATED, SETAUTHENTICATED] = useState(false)
   const [TOKEN, SETTOKEN] = useState("")
   const router = useRouter()
-  let authenticated = false
 
   /*
   Global states
@@ -25,13 +25,18 @@ export default function App({ Component, pageProps }) {
     TOKEN,
   }
 
-  const init = (cookie_token)=>{
+  const init = async (cookie_token)=>{
     /*
     init
     */
-    authenticated = true
-    SETAUTHENTICATED(true)
-    SETTOKEN(cookie_token)
+    const token_valid = await GET_USER(cookie_token)
+    if (token_valid) {
+      SETAUTHENTICATED(true)
+      SETTOKEN(cookie_token)
+    } else {
+      DELETECOOKIE(COOKIE_TOKEN)
+      router.push("/login")
+    }
   }
 
   useEffect(()=>{
@@ -50,11 +55,11 @@ export default function App({ Component, pageProps }) {
     <GlobalContext.Provider value={value}>
       <Head>
         <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href={`/${BASE_PATH}/favicon.ico`} />
       </Head>
       <main>
       {
-        (authenticated || AUTHENTICATED) ?
+        AUTHENTICATED ?
         // display regular pages
         <>
           <Header />

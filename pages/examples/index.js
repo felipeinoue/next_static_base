@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../globals/lib";
 import styles from "./index.module.css";
 import { GET_USER } from "@/globals/apicalls";
-import { DEBUG } from "@/globals/var";
+import { BASE_PATH, DEBUG } from "@/globals/var";
 
 export default function Examples() {
   const {TOKEN} = useContext(GlobalContext);
@@ -36,7 +36,7 @@ export default function Examples() {
           <br></br>
           <div>image source example</div>
           <div>
-            <img src='/instagram.svg'></img>
+            <img src={`/${BASE_PATH}/instagram.svg`}></img>
           </div>
           <br></br>
           <div>image css</div>

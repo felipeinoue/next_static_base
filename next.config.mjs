@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
+  basePath: '/myapp', //[tbd]
   images: {
     unoptimized: true,
   },
