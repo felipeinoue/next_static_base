@@ -43,11 +43,11 @@ export default function App({ Component, pageProps }) {
     /*
     on load
     */
-    const cookie_token = GETCOOKIE(COOKIE_TOKEN)
-    if (cookie_token) {
-      init(cookie_token)
+    const cookie_token_present = GETCOOKIE(COOKIE_TOKEN)
+    if (cookie_token_present) {
+      init(cookie_token_present)
     } else {
-      router.push("/login")
+      router.push(`/login`)
     }
   },[AUTHENTICATED])
 

@@ -5,7 +5,6 @@ import { COOKIE_TOKEN } from "@/globals/var";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 
-
 export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -31,7 +30,7 @@ export default function Login() {
     on load
     */
 
-    // do not show this page if authenticated
+    // redirect if authenticated
     if (AUTHENTICATED) {
       router.push("/")
     }
