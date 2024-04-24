@@ -1,0 +1,17 @@
+
+.main {
+  background-color: blue;
+
+  @media (min-width: 720px) { /* web */
+    background-color: purple;
+  }  
+}
+
+.hero {
+  background-color: red;
+}
+
+.facebook {
+  background-image: url('/facebook.svg');
+}
+
