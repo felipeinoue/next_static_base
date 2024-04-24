@@ -1,12 +1,14 @@
 import Header from "@/components/header";
 import "@/styles/globals.css";
 import Head from "next/head";
-import { GlobalContext, GlobalProvider } from "../globals/lib";
-import { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../globals/lib";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { GETCOOKIE } from "@/globals/functions";
 import { COOKIE_TOKEN } from "@/globals/var";
 import Loading from "@/components/loading";
+import styles from "./index.module.css";
+
 
 export default function App({ Component, pageProps }) {
   const [AUTHENTICATED, SETAUTHENTICATED] = useState(false)
