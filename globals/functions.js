@@ -19,14 +19,14 @@ export function SETCOOKIE(key, value) {
   /*
   string * string -> _
   */
-  document.cookie = `${key}=${value}`;
+  document.cookie = `${key}=${value};path=/`;
 }
 
 export function DELETECOOKIE(key) {
   /*
   string -> _
   */
-  document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+  document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/`;
 }
 
 export function SETCOOKIE_FOR_ONE_WEEK(key, value) {
