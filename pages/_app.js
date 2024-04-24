@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { GETCOOKIE } from "@/globals/functions";
 import { COOKIE_TOKEN } from "@/globals/var";
+import Loading from "@/components/loading";
 
 export default function App({ Component, pageProps }) {
   const [AUTHENTICATED, SETAUTHENTICATED] = useState(false)
@@ -64,7 +65,7 @@ export default function App({ Component, pageProps }) {
           <Component {...pageProps} />
           :
           // still loading
-          <div>Loading...</div>
+          <Loading />
         )
       }
       </main>
